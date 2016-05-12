@@ -16,4 +16,6 @@ Planned Features:
     3. Command-Line interface 
     4. Multi-Threading
     5. Checkpointing & State saving
-    6. Improved Prime Sieve 
+    6. Improved Prime Sieve
+    
+Licensed under the GNU GPL v3.0 license. See LICENSE for full license. 
