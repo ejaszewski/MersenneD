@@ -1,0 +1,6 @@
+{
+	"name" : "mersenned",
+	"description" : "A fast Mersenne Prime generation program.",
+	"dependencies" : {
+	}
+}

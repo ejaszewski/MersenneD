@@ -1,0 +1,19 @@
+MersenneD
+
+MersenneD aims to be a lightweight, fast Mersenne Prime finding program. The application is written entirely in the D programming language, and uses the built-in Big Integer class.
+
+Currently Implemented Features:
+    1. Lucas-Lehmer Primality Test
+        - No division modulus (using iterative shifts, bitwise &, and addition)
+        - Post-square and modulus subtraction
+        - Limited heap allocation
+    2. Basic Sieve of Eratosthenes for p-value generation
+    3. Per-Test timing system using D-lang Stopwatch (nano-/milli-second precision)
+
+Planned Features:
+    1. Trial Division test (to improve overall performance)
+    2. P-1 Factoring test (to improve overall performance)
+    3. Command-Line interface 
+    4. Multi-Threading
+    5. Checkpointing & State saving
+    6. Improved Prime Sieve 
