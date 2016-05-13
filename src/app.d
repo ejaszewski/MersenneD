@@ -7,7 +7,9 @@ import mersenned.PrimeSieve;
 
 void main(string[] args) {
 	uint[] ps = PrimeSieve.getPrimeSieve(0, 10000);
-	
+	int numMersennePrimes = 0;
+	StopWatch totalTime;
+	totalTime.start();
 	foreach(p; ps) {
 	    StopWatch sW;
 	    sW.start();
@@ -15,20 +17,23 @@ void main(string[] args) {
 	    if(PrimeTesting.lucasLehmer(p, m)) {
 	        writefln("2^%d-1 = %d", p, m);
 	        writefln("%d digits long", format("%d", m).length);
-	        printSmart(sW.peek().nsecs());
+	        writefln("Found after %s computing. Individual test took %s.", formatTime(totalTime.peek().nsecs()), formatTime(sW.peek().nsecs()));
+	        writeln();
+	        numMersennePrimes++;
         }
 	    sW.stop();
 	}
-	
+	totalTime.stop();
+	writefln("Found %d Mersenne Primes in %s.", numMersennePrimes, formatTime(totalTime.peek().nsecs()));
 }
 
-void printSmart(long nanoSec) {
-    if(nanoSec / 1000 == 0)
-        writefln("%d nsec", nanoSec);
-    else if(nanoSec / 1000000 == 0)
-        writefln("%.1f usec", nanoSec / 1000.0);
-    else if(nanoSec / 1000000000 == 0)
-        writefln("%.1f msec", nanoSec / 1000000.0);
-    else
-        writefln("%.3f sec", nanoSec / 1000000000.0);
+string formatTime(long nanoSec) {
+    if(nanoSec / 1000 == 0) // If usec < 0 print nanosec
+        return format("%d nsec", nanoSec);
+    else if(nanoSec / 1000000 == 0) // If msec < 0 print usec
+        return format("%.1f usec", nanoSec / 1000.0);
+    else if(nanoSec / 1000000000 == 0) // If sec < 0 print msec
+        return format("%.1f msec", nanoSec / 1000000.0);
+    else // Print sec + 100s of msecs
+        return format("%.1f sec", nanoSec / 1000000000.0);
 }
